@@ -10,6 +10,7 @@ public class ContactManagersApplication {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> contactStrings = new ArrayList<>();
 
         createPathAndFile();
 
@@ -36,21 +37,28 @@ public class ContactManagersApplication {
 
                     Contact newContact = new Contact(name, number);
 
-                    List<String> contactStrings = Collections.singletonList(newContact.toFileString());
+                    contactStrings.add(String.valueOf(newContact));
+                    System.out.println(contactStrings);
 
 
-                    try {    // , StandardOpenOption.APPEND
+//                    try {
+//
+//
 //                        Path contacts = Paths.get("data", "contacts.txt");
 
 
 //                        Files.write(contacts, contactStrings, StandardOpenOption.APPEND);
-                    } catch (IOException e) {
-                        System.out.println("file write exception: " + e.getMessage());
-                    }
+//                    } catch (IOException e) {
+//                        System.out.println("file write exception: " + e.getMessage());
+//                    }
 
                     break;
                 case 2:
-                    System.out.println("2");
+
+
+                    for (String contact : newContact.keySet()) {
+                        System.out.printf("|%s| ", contact);
+                    }
                     break;
                 case 3:
                     System.out.println("3");
