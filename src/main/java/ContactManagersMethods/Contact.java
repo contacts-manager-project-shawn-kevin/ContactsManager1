@@ -18,15 +18,17 @@ public class Contact {
 
     public String getName() {
         System.out.print(this.name + "\n");
-        return "";
+        return this.name;
     }
 
     public String getNumber() {
         System.out.println(String.valueOf(this.number).replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3"));
-        return "";
+        return this.number;
     }
 
-
+    public String toFileString() {
+        return String.format("%s,%s", name, number);
+    }
 
 
 
