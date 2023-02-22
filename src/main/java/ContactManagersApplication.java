@@ -1,5 +1,10 @@
 import ContactManagersMethods.Contact;
 
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class ContactManagersApplication {
@@ -46,10 +51,33 @@ public class ContactManagersApplication {
 
 //            break;
 
-        }
+            Path Data = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data");
+            Path contacts = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data", "contacts.txt");
 
+            System.out.println(Files.exists(Data));
+
+            if(!Files.exists(Data)) {
+                try {
+                    Files.createDirectory(Data);
+                    System.out.println("dir created");
+                } catch (IOException e) {
+                    System.out.println("createDirectory exception: " + e.getMessage());
+                }
+            } else {
+                System.out.println("the directory exists already");
+            }
+        try {
+
+            Files.createFile(contacts);
+            System.out.println("the file has been created");
+        } catch(FileAlreadyExistsException e) {
+            System.out.println("the file exists!");
+        } catch (IOException e) {
+            System.out.println("createFile exception: " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
 
-}
+}}
