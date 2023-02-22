@@ -70,18 +70,15 @@ public class ContactManagersApplication {
                     String input = scanner.nextLine();
 
                     List<String> contacts = Files.readAllLines(Paths.get("data", "contacts.txt"));
-                   int i = 0 ;
+
+                    int i = 0 ;
                     for (String contact : contacts) {
-                        if (contact.equalsIgnoreCase(input)){
+                        if (contact.indexOf(input) !=-1? true: false){
                             System.out.println((i+1)+": "+ contacts.get(i));
                             continue;
                         }
-
                         i++;
-
                     }
-
-
                     break;
                 case 4:
                     System.out.println("4");
