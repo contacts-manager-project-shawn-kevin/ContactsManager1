@@ -1,5 +1,6 @@
 import ContactManagersMethods.Contact;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
@@ -9,7 +10,7 @@ public class ContactManagersApplication {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        
+
         createPathAndFile();
 
         while (true) {
@@ -25,21 +26,24 @@ public class ContactManagersApplication {
 
             switch (category) {
                 case 1:
+
                     System.out.print("Add new contact name: ");
                     String name = scanner.nextLine();
 
                     System.out.print("Add new contact phone number: ");
                     String number = scanner.nextLine();
-                    scanner.nextLine();
+                      scanner.nextLine();
 
                     Contact newContact = new Contact(name, number);
 
-                    List<String> contactStrings = Arrays.asList(newContact.toFileString());
+                    List<String> contactStrings = Collections.singletonList(newContact.toFileString());
 
-                    try {
-                        // , StandardOpenOption.APPEND
-                        Path contacts;
-                        Files.write(contacts, contactStrings);
+
+                    try {    // , StandardOpenOption.APPEND
+//                        Path contacts = Paths.get("data", "contacts.txt");
+
+
+//                        Files.write(contacts, contactStrings, StandardOpenOption.APPEND);
                     } catch (IOException e) {
                         System.out.println("file write exception: " + e.getMessage());
                     }
@@ -72,10 +76,13 @@ public class ContactManagersApplication {
         }
     }
         public static void createPathAndFile() {
-            Path Data = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data");
-            Path contacts = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data", "contacts.txt");
+//            Path Data = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data");
+//            Path contacts = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data", "contact.txt");
 
-            System.out.println(Files.exists(Data));
+            Path Data = Paths.get("data");
+            Path contacts = Paths.get("data", "contacts.txt");
+
+                    System.out.println(Files.exists(Data));
 
             if(!Files.exists(Data)) {
                 try {
@@ -99,5 +106,5 @@ public class ContactManagersApplication {
             }
         }
 
-    
+
 }
