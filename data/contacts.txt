@@ -1,5 +1,11 @@
-Name | Phone number| email
------------------------------------
-
-Shhshs Shhshs  |(123)-456-5432 |shhssh@hshshs.com
-Jhdshdh Hjdsjds|(123)-456-5432 |hsdhds@hjfdjkhdf.com
+Dude One     | (123)-456-7890 | dudeone@dude.com
+Dude Two     | (123)-456-7890 | dudetwo@dude.com
+Dude Three   | (123)-456-7890 | dudethree@dude.com
+Dude Four    | (123)-456-7890 | dudefour@dude.com
+Dude Five    | (123)-456-7890 | dudefive@dude.com
+Dude Six     | (123)-456-7890 | dudesix@dude.com
+Dude Seven   | (123)-456-7890 | dudeseven@dude.com
+Dude Eight   | (123)-456-7890 | dudeeight@dude.com
+Dude Nine    | (123)-456-7890 | dudenine@dude.com
+Dude Ten     | (123)-456-7890 | dudeten@dude.com
+Pirate Booty | (989)-313-5489 | pirate.booty@dude.com

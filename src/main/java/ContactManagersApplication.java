@@ -107,6 +107,11 @@ public class ContactManagersApplication {
                     try {    // , StandardOpenOption.APPEND
                         Path contacts = Paths.get("data", "contacts.txt");
                         List<String> contactList = Files.readAllLines(contacts);
+                        System.out.println("------------------------------------------------------");
+                        System.out.println("Name            | Phone          | Email address     |");
+                        System.out.println("------------------------------------------------------");
+
+
                         for (int i = 0; i < contactList.size(); i++) {
                             System.out.println((i+1)+": "+contactList.get(i));
                         }
@@ -214,7 +219,7 @@ public class ContactManagersApplication {
 
 
 
-        }
+    }
 
     public static boolean isValid(String email)
     {
