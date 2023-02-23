@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
+import util.Input;
+
 import static java.lang.Character.getName;
 
 public class ContactManagersApplication {
@@ -16,25 +18,38 @@ public class ContactManagersApplication {
         createPathAndFile();
 
         while (true) {
-            System.out.println("1. Add a new contact..");
-            System.out.println("2. View contacts");
+            System.out.println("1. Add a new contact.");
+            System.out.println("2. View contacts.");
             System.out.println("3. Search a contact by name.");
             System.out.println("4. Delete an existing contact.");
             System.out.println("5. Exit.");
-            System.out.println("Enter an option (1, 2, 3, 4 or 5): ");
+            System.out.print("Enter an option (1, 2, 3, 4 or 5): ");
 
+//            int category = scanner.getInt(1,5);
             int category = scanner.nextInt();
             scanner.nextLine();
 
             switch (category) {
                 case 1:
 
-                    System.out.print("Add new contact name: ");
-                    String name = scanner.nextLine();
+                    System.out.println("Add new contact name.");
 
-                    System.out.print("Add new contact phone number: ");
-                    String number = scanner.nextLine();
-                      scanner.nextLine();
+                    System.out.print("First name: ");
+                    String firstName = scanner.nextLine().toLowerCase();
+
+                    System.out.print("Last name: ");
+                    String lastName = scanner.nextLine().toLowerCase();
+
+                    String name = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1) + " " + Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
+
+                    String number = "";
+                    do {
+                        System.out.print("Add new contact phone number with area code: ");
+                        number = scanner.nextLine();
+                        if (number.length() < 10 || number.length() > 10){
+                            System.out.println("Invalid phone number entered.");
+                        }
+                    } while (number.length() < 10 || number.length() > 10);
 
                     Contact newContact = new Contact(name, number.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3"));
 
@@ -75,14 +90,33 @@ public class ContactManagersApplication {
                     for (String contact : contacts) {
                         if (contact.indexOf(input) !=-1? true: false){
                             System.out.println((i+1)+": "+ contacts.get(i));
+                            i++;
                             continue;
                         }
                         i++;
                     }
                     break;
                 case 4:
-                    System.out.println("4");
-                    break;
+                    System.out.println("remove friend");
+                    String userInput = scanner.nextLine();
+                    Path contactsFile = Paths.get("data", "contacts.txt");
+                    List<String> contactPeople = Files.readAllLines(contactsFile);
+
+                    for (int j = 0; j < contactPeople.size(); j++) {
+                        String contact = contactPeople.get(j);
+                        if (contact.contains(userInput)) {
+                            System.out.println("Are you sure you want to remove " + contact + "? (y/n)");
+                            String userInput2 = scanner.nextLine();
+                            if (Objects.equals(userInput2, "y")) {
+                                contactPeople.remove(j);
+                                Files.write(contactsFile, contactPeople);
+                                System.out.println(contact + " has been removed from your contacts.");
+                            } else {
+                                System.out.println(contact + " has not been removed from your contacts.");
+                            }
+                            break;
+                        }
+                    }
                 case 5:
                     System.out.println("5");
                     break;
