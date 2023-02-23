@@ -4,7 +4,7 @@ import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
-
+import java.util.regex.Pattern;
 import util.Input;
 
 import static java.lang.Character.getName;
@@ -32,6 +32,26 @@ public class ContactManagersApplication {
                 case 1:
 
                     System.out.println("Add new contact name.");
+                    System.out.println("                           ||||||\n" +
+                            "                           | o o |\n" +
+                            "                           |  >  |\n" +
+                            "                           | \\_/ |\n" +
+                            "                            \\___/\n" +
+                            "                           __| |__\n" +
+                            "                          /       \\\n" +
+                            "                         | |     | |\n" +
+                            "        _________________| |     | |_____________---__\n" +
+                            "       /                 | |_____| |         /  /  / /|\n" +
+                            "new   /                  /_|  _  |_\\        /  /  / / |\n" +
+                            "     /                    / / / /          /  /__/ / /|\n" +
+                            "    /____________________/ / / /__________/___\\_/_/ / |\n" +
+                            "    |____________________| |_| |__________________|/  |\n" +
+                            "    |____________________| |_| |__________________|   /\n" +
+                            "____|              |     | | | | ||               |  /\n" +
+                            "    | o          o | o         o || o           o | /\n" +
+                            "    |______________|_____________||_______________|/\n" +
+                            "_______________________________________________________");
+                    System.out.println("Add new contact name.");
 
                     System.out.print("First name: ");
                     String firstName = scanner.nextLine().toLowerCase();
@@ -40,6 +60,16 @@ public class ContactManagersApplication {
                     String lastName = scanner.nextLine().toLowerCase();
 
                     String name = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1) + " " + Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
+
+                    String emailAddress = "";
+                    do {
+                        System.out.print("Email address: ");
+                        emailAddress = scanner.nextLine().toLowerCase();
+
+                        if (!isValid(emailAddress)) {
+                            System.out.println("Invalid email address entered.");
+                        }
+                    } while (!isValid(emailAddress));
 
                     String number = "";
                     do {
@@ -55,9 +85,8 @@ public class ContactManagersApplication {
                     List<String> contactStrings = Collections.singletonList(newContact.toFileString());
 
 
-                    try {    // , StandardOpenOption.APPEND
+                    try {
                         Path contacts = Paths.get("data", "contacts.txt");
-//
 
                         Files.write(contacts, contactStrings, StandardOpenOption.APPEND);
                     } catch (IOException e) {
@@ -66,6 +95,15 @@ public class ContactManagersApplication {
 
                     break;
                 case 2:
+                    System.out.println("view contacts");
+                    System.out.println("(\\ \n" +
+                            "\\'\\ \n" +
+                            " \\'\\     __________  \n" +
+                            " / '|   ()_________)\n" +
+                            " \\ '/    \\ list~~of \\\n" +
+                            "   \\       \\ contacts \\\n" +
+                            "   ==).      \\__________\\\n" +
+                            "  (__)       ()__________)");
                     try {    // , StandardOpenOption.APPEND
                         Path contacts = Paths.get("data", "contacts.txt");
                         List<String> contactList = Files.readAllLines(contacts);
@@ -81,6 +119,14 @@ public class ContactManagersApplication {
                     break;
                 case 3:
                     System.out.println("search for a friend");
+                    System.out.println("    __         __\n" +
+                            "   /.-'       `-.\\\n" +
+                            "  //             \\\\\n" +
+                            " /j_______________j\\\n" +
+                            "/o.-==-. .-. .-==-.o\\\n" +
+                            "||      )) ((      ||\n" +
+                            " \\\\____//   \\\\____//   hjw\n" +
+                            "  `-==-'     `-==-'\n");
                     String input = scanner.nextLine();
 
                     List<String> contacts = Files.readAllLines(Paths.get("data", "contacts.txt"));
@@ -97,6 +143,12 @@ public class ContactManagersApplication {
                     break;
                 case 4:
                     System.out.println("remove friend");
+                    System.out.println("        ,--.!,\n" +
+                            "     __/   -*-\n" +
+                            "   ,d08b.  '|`\n" +
+                            "   0088MM     \n" +
+                            "   `9MMP'     \n" +
+                            "Enter name");
                     String userInput = scanner.nextLine();
                     Path contactsFile = Paths.get("data", "contacts.txt");
                     List<String> contactPeople = Files.readAllLines(contactsFile);
@@ -110,28 +162,70 @@ public class ContactManagersApplication {
                                 contactPeople.remove(j);
                                 Files.write(contactsFile, contactPeople);
                                 System.out.println(contact + " has been removed from your contacts.");
+                                System.out.println("     _.-^^---....,,--       \n" +
+                                        " _--                  --_  \n" +
+                                        "<                        >)\n" +
+                                        "|                         | \n" +
+                                        " \\._                   _./  \n" +
+                                        "    ```--. . , ; .--'''       \n" +
+                                        "          | |   |             \n" +
+                                        "       .-=||  | |=-.   \n" +
+                                        "       `-=#$%&%$#=-'   \n" +
+                                        "          | ;  :|     \n" +
+                                        " _____.,-#%&$@%#&#~,._____");
                             } else {
                                 System.out.println(contact + " has not been removed from your contacts.");
+                                break;
                             }
-                            break;
                         }
                     }
-                case 5:
-                    System.out.println("5");
+                    break;
+                    case 5:
+                    System.out.println("you found the exit");
+                    System.out.println("88888888888888888888888888888888888888888888888888888888888888888888888\n" +
+                            "88.._|      | `-.  | `.  -_-_ _-_  _-  _- -_ -  .'|   |.'|     |  _..88\n" +
+                            "88   `-.._  |    |`!  |`.  -_ -__ -_ _- _-_-  .'  |.;'   |   _.!-'|  88\n" +
+                            "88      | `-!._  |  `;!  ;. _______________ ,'| .-' |   _!.i'     |  88\n" +
+                            "88..__  |     |`-!._ | `.| |_______________||.\"'|  _!.;'   |     _|..88\n" +
+                            "88   |``\"..__ |    |`\";.| i|_|MMMMMMMMMMM|_|'| _!-|   |   _|..-|'    88\n" +
+                            "88   |      |``--..|_ | `;!|l|MMoMMMMoMMM|1|.'j   |_..!-'|     |     88\n" +
+                            "88   |      |    |   |`-,!_|_|MMMMP'YMMMM|_||.!-;'  |    |     |     88\n" +
+                            "88___|______|____!.,.!,.!,!|d|MMMo * loMM|p|,!,.!.,.!..__|_____|_____88\n" +
+                            "88      |     |    |  |  | |_|MMMMb,dMMMM|_|| |   |   |    |      |  88\n" +
+                            "88      |     |    |..!-;'i|r|MPYMoMMMMoM|r| |`-..|   |    |      |  88\n" +
+                            "88      |    _!.-j'  | _!,\"|_|M<>MMMMoMMM|_||!._|  `i-!.._ |      |  88\n" +
+                            "88     _!.-'|    | _.\"|  !;|1|MbdMMoMMMMM|l|`.| `-._|    |``-.._  |  88\n" +
+                            "88..-i'     |  _.''|  !-| !|_|MMMoMMMMoMM|_|.|`-. | ``._ |     |``\"..88\n" +
+                            "88   |      |.|    |.|  !| |u|MoMMMMoMMMM|n||`. |`!   | `\".    |     88\n" +
+                            "88   |  _.-'  |  .'  |.' |/|_|MMMMoMMMMoM|_|! |`!  `,.|    |-._|     88\n" +
+                            "88  _!\"'|     !.'|  .'| .'|[@]MMMMMMMMMMM[@] \\|  `. | `._  |   `-._  88\n" +
+                            "88-'    |   .'   |.|  |/| /                 \\|`.  |`!    |.|      |`-88\n" +
+                            "88      |_.'|   .' | .' |/                   \\  \\ |  `.  | `._-Lee|  88\n" +
+                            "88     .'   | .'   |/|  /                     \\ |`!   |`.|    `.  |  88\n" +
+                            "88  _.'     !'|   .' | /                       \\|  `  |  `.    |`.|  88\n" +
+                            "88 vanishing point 888888888888888888888888888888888888888888888(FL)888");
                     break;
             }
+            if (category == 5) {
+                break;
+            }
+        }
 
-
-//            Contact moe = new Contact();
-//            moe.name = "Moe";
-//            moe.number = String.valueOf(2103674647);
-//            moe.getName();
-//            moe.getNumber();
-
-//            break;
 
 
         }
+
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
         public static void createPathAndFile() {
 //            Path Data = Paths.get("/Users/shawnhardin/IdeaProjects/ContactsManager1/src/main/java/ContactManagersMethods/Data");
