@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class Contact {
     public String name;
     public String number;
+    public String emailAddress;
 
-    public Contact(String name, String number) {
+    public Contact(String name, String number, String emailAddress) {
         this.name = name;
         this.number = number;
+        this.emailAddress = emailAddress;
     }
 
     public Contact() {
@@ -27,7 +29,7 @@ public class Contact {
     }
 
     public String toFileString() {
-        return String.format("%s,%s", name, number);
+        return String.format("%s,%s", name, number, emailAddress);
     }
 
 

@@ -80,7 +80,7 @@ public class ContactManagersApplication {
                         }
                     } while (number.length() < 10 || number.length() > 10);
 
-                    Contact newContact = new Contact(name, number.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3"));
+                    Contact newContact = new Contact(name, number.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1)-$2-$3"), emailAddress);
 
                     List<String> contactStrings = Collections.singletonList(newContact.toFileString());
 
