@@ -1,17 +1,5 @@
-marvin,(123)-456-7895
-adsf asdfasdf,456777
-joe blow,(012)-345-678
-joe smith,(123)-456-7890
-dude three,(012)-345-6789
-dude four,(123)-645-6789
-dude four,(123)-456-7890
-dude five,(012)-345-6789
-dude six,(012)-345-6789
-KEVIN FOWLER,(012)-345-6789
-Kevin Fowler,(012)-345-6789
-Kevin Fowler,(012)-345-6789
-Nom Nom,(098)-765-4321
-Shawn Hardin,(098)-765-4321
-Asdf Asdf,(123)-456-7890
-Dude Ten,(101)-010-1010
-Asdf Asdf,(012)-345-6789
+Name | Phone number| email
+-----------------------------------
+
+Shhshs Shhshs  |(123)-456-5432 |shhssh@hshshs.com
+Jhdshdh Hjdsjds|(123)-456-5432 |hsdhds@hjfdjkhdf.com

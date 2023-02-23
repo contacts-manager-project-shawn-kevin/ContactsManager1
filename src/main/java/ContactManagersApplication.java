@@ -1,13 +1,13 @@
 import ContactManagersMethods.Contact;
 
-import javax.xml.crypto.Data;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 import java.util.regex.Pattern;
 import util.Input;
 
-import static java.lang.Character.getName;
+
 
 public class ContactManagersApplication {
 
@@ -119,14 +119,15 @@ public class ContactManagersApplication {
                     break;
                 case 3:
                     System.out.println("search for a friend");
-                    System.out.println("    __         __\n" +
-                            "   /.-'       `-.\\\n" +
-                            "  //             \\\\\n" +
-                            " /j_______________j\\\n" +
-                            "/o.-==-. .-. .-==-.o\\\n" +
-                            "||      )) ((      ||\n" +
-                            " \\\\____//   \\\\____//   hjw\n" +
-                            "  `-==-'     `-==-'\n");
+                    System.out.println(" \n" +
+                            "       /\\       \n" +
+                            "      /  \\      \n" +
+                            "     /,--.\\     \n" +
+                            "    /< () >\\    \n" +
+                            "   /  `--'  \\   \n" +
+                            "  /          \\  \n" +
+                            " /   search   \\ \n" +
+                            "/______________\\\n");
                     String input = scanner.nextLine();
 
                     List<String> contacts = Files.readAllLines(Paths.get("data", "contacts.txt"));

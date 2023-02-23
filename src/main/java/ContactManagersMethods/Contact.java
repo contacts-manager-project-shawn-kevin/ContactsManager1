@@ -29,7 +29,7 @@ public class Contact {
     }
 
     public String toFileString() {
-        return String.format("%s,%s", name, number, emailAddress);
+        return String.format("%-15s|%-15s|%-15s", name, number, emailAddress);
     }
 
 
