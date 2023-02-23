@@ -87,7 +87,7 @@ public class ContactManagersApplication {
 
                     int i = 0 ;
                     for (String contact : contacts) {
-                        if (contact.indexOf(input) !=-1? true: false){
+                        if (contact.toLowerCase().indexOf(input.toLowerCase()) !=-1? true: false){
                             System.out.println((i+1)+": "+ contacts.get(i));
                             i++;
                             continue;
@@ -103,7 +103,7 @@ public class ContactManagersApplication {
 
                     for (int j = 0; j < contactPeople.size(); j++) {
                         String contact = contactPeople.get(j);
-                        if (contact.contains(userInput)) {
+                        if (contact.toLowerCase().contains(userInput.toLowerCase())) {
                             System.out.println("Are you sure you want to remove " + contact + "? (y/n)");
                             String userInput2 = scanner.nextLine();
                             if (Objects.equals(userInput2, "y")) {
