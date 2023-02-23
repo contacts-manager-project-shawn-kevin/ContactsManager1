@@ -14,6 +14,7 @@ public class ContactManagersApplication {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
+        Input userCategory = new Input();
 
         createPathAndFile();
 
@@ -25,9 +26,7 @@ public class ContactManagersApplication {
             System.out.println("5. Exit.");
             System.out.print("Enter an option (1, 2, 3, 4 or 5): ");
 
-//            int category = scanner.getInt(1,5);
-            int category = scanner.nextInt();
-            scanner.nextLine();
+            int category = userCategory.getInt(1,5);
 
             switch (category) {
                 case 1:

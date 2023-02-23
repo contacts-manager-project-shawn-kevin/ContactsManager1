@@ -50,10 +50,12 @@ public class Input {
     }
 
     public int getInt(int min, int max){
-        System.out.printf("Enter an integer between " + min + " and " + max + ": ");
+//        System.out.printf("Enter an integer between " + min + " and " + max + ": ");
         int userInt = getInt();
 
         if (userInt > max || userInt < min) {
+            System.out.printf("Enter an integer between " + min + " and " + max + ": ");
+
             return getInt(min, max);
         }
 
